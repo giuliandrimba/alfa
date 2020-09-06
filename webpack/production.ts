@@ -1,16 +1,39 @@
 import CompressionWebpackPlugin from "compression-webpack-plugin";
 import HTMLWebpackPlugin from "html-webpack-plugin";
-import HTMLWebpackTagsPlugin from "html-webpack-tags-plugin";
 import { join } from "path";
 import { Configuration } from "webpack";
+import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
+import { CleanWebpackPlugin } from 'clean-webpack-plugin';
+
 
 const config = (dirPath: string): Configuration => {
   return {
-    devtool: "source-map",
     output: {
       filename: '[name].[contentHash].bundle.js'
     },
+    optimization: {
+      moduleIds: 'hashed',
+      runtimeChunk: 'single',
+      splitChunks: {
+        cacheGroups: {
+          vendor: {
+            test: /[\\/]node_modules[\\/]/,
+            name: 'vendors',
+            chunks: 'all',
+          },
+        },
+      },
+    },
     plugins: [
+      new ForkTsCheckerWebpackPlugin({
+        typescript: {
+          diagnosticOptions: {
+            semantic: true,
+            syntactic: true,
+          },
+        },
+      }),
+      new CleanWebpackPlugin(),
       new HTMLWebpackPlugin({
         filename: "index.html",
         template: join(dirPath, "/src/index.html"),

@@ -1,12 +1,9 @@
 import HTMLWebpackPlugin from "html-webpack-plugin";
-import HTMLWebpackTagsPlugin from "html-webpack-tags-plugin";
 import { join, resolve } from "path";
 import {
-  Configuration,
-  DevtoolModuleFilenameTemplateInfo,
-  DllReferencePlugin,
   HotModuleReplacementPlugin,
 } from "webpack";
+import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import { Configuration as DevServerConfig } from "webpack-dev-server";
 
 const config = (dirPath: string): any => {
@@ -14,18 +11,23 @@ const config = (dirPath: string): any => {
     devServer: ((): DevServerConfig => {
       return {
         contentBase: join(dirPath, "/dist"),
-        host: "0.0.0.0",
         hot: true,
         inline: true,
-        publicPath: "/",
       };
     })(),
     devtool: "eval-source-map",
     output: {
       filename: '[name].bundle.js',
-      path: `${dirPath}/dist`
     },
     plugins: [
+      new ForkTsCheckerWebpackPlugin({
+        typescript: {
+          diagnosticOptions: {
+            semantic: true,
+            syntactic: true,
+          },
+        },
+      }),
       new HotModuleReplacementPlugin(),
       new HTMLWebpackPlugin({
         filename: "index.html",

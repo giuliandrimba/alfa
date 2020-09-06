@@ -5,18 +5,19 @@ import prodConfig from "./production";
 
 const rootDir = path.resolve(__dirname, '../');
 
-const config = (_: any, args: WebpackConfig): WebpackConfig => {
+const config = (env: any, args: WebpackConfig): WebpackConfig => {
   const commonConfig: WebpackConfig = {
     entry: {
       app: `${rootDir}/src/index.tsx`,
     },
-    mode: args.mode,
+    mode: env.NODE_ENV,
     module: {
       rules: [
         {
           exclude: /node_modules/,
+          include: path.resolve(rootDir, 'src'),
           test: /\.(ts|js)x?$/,
-          use: "ts-loader",
+          use: "babel-loader",
         },
         {
           test: /\.css$/,
@@ -47,7 +48,7 @@ const config = (_: any, args: WebpackConfig): WebpackConfig => {
     },
   }
 
-  const additionalConfig = args.mode === "production" ? prodConfig(rootDir) : devConfig(rootDir);
+  const additionalConfig = env.NODE_ENV === "production" ? prodConfig(rootDir) : devConfig(rootDir);
 
   return { ...commonConfig, ...additionalConfig };
 }
