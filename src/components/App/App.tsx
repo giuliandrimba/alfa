@@ -1,16 +1,16 @@
 import React from 'react';
-import { GlobalStyle } from './styled';
+import Logo from 'Assets/image/alfa.jpg'
 
 export type AppContextType = {};
 
 export const AppContext = React.createContext<AppContextType>({});
 
-export const App = () => {
+export default () => {
   const context = {};
-
   return (
     <AppContext.Provider value={context}>
-      <GlobalStyle>ZERO App</GlobalStyle>
+      <h1>Alfa APP</h1>
+      <img src={Logo} />
     </AppContext.Provider>
   )
 }
