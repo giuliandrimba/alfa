@@ -9,8 +9,8 @@ Build system boilerplate for React projects:
 
 ### __Features:__
 
-* [Webpack] (https://webpack.js.org/)
-* [React] (https://reactjs.org/)
-* [Styled Components] (https://styled-components.com/)
-* [TypeScript] (https://www.typescriptlang.org/)
-* [Image optimization] (https://github.com/Klathmon/imagemin-webpack-plugin)
+* [Webpack](https://webpack.js.org/)
+* [React](https://reactjs.org/)
+* [Styled Components](https://styled-components.com/)
+* [TypeScript](https://www.typescriptlang.org/)
+* [Image optimization](https://github.com/Klathmon/imagemin-webpack-plugin)
