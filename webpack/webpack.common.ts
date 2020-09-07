@@ -1,7 +1,9 @@
 import path from 'path';
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
+import CopyWebpackPlugin from 'copy-webpack-plugin';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import HTMLWebpackPlugin from "html-webpack-plugin";
+import ImageminPlugin from 'imagemin-webpack-plugin'
 
 export const rootDir = path.resolve(__dirname, '../');
 
@@ -54,6 +56,21 @@ const config = {
       },
     }),
     new CleanWebpackPlugin(),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: 'public',
+          to: '',
+          globOptions: {
+            ignore: ['.*'],
+          },
+        },
+      ],
+    }),
+    new ImageminPlugin({
+      disable: process.env.NODE_ENV !== 'production',
+      test: /\.(jpe?g|png|gif|svg)$/i
+    }),
     new HTMLWebpackPlugin({
       filename: "index.html",
       inject: true,

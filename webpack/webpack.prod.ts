@@ -1,7 +1,9 @@
+import path from 'path';
 import { merge } from 'webpack-merge';
 import CompressionWebpackPlugin from "compression-webpack-plugin";
+import FaviconsWebpackPlugin from 'favicons-webpack-plugin';
 import { Configuration as WebpackConfig } from "webpack";
-import common from './webpack.common';
+import common, { rootDir } from './webpack.common';
 
 
 const config = (env: any, args: WebpackConfig): WebpackConfig => {
@@ -25,6 +27,7 @@ const config = (env: any, args: WebpackConfig): WebpackConfig => {
       },
     },
     plugins: [
+      new FaviconsWebpackPlugin(path.resolve(rootDir, 'public/logo.png')),
       new CompressionWebpackPlugin({
         algorithm: "gzip",
         minRatio: 0.8,
