@@ -6,6 +6,7 @@ import HTMLWebpackPlugin from "html-webpack-plugin";
 import ImageminPlugin from 'imagemin-webpack-plugin'
 
 export const rootDir = path.resolve(__dirname, '../');
+const isProduction = process.env.NODE_ENV === 'production';
 
 const config = {
   entry: {
@@ -43,7 +44,7 @@ const config = {
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
     alias: {
-      Assets: path.resolve(rootDir, 'src/assets/'),
+      Assets: isProduction ? path.resolve(rootDir, 'src/assets/') : path.resolve(rootDir, 'src/assets/'),
     }
   },
   plugins: [
