@@ -1,7 +1,7 @@
 {
-  "name": "ten-movies",
-  "version": "0.0.1",
-  "description": "\"Top 10 movies list creator\"",
+  "name": "alfa",
+  "version": "0.1.0",
+  "description": "Build system boilerplate for React projects",
   "repository": "https://github.com/giuliandrimba/tenmovies",
   "author": "Giulian Drimba",
   "license": "MIT",
