@@ -14,3 +14,10 @@ Build system boilerplate for React projects:
 * [Styled Components](https://styled-components.com/)
 * [TypeScript](https://www.typescriptlang.org/)
 * [Image optimization](https://github.com/Klathmon/imagemin-webpack-plugin)
+
+
+### __Generator:__
+
+This project uses Atomic Design to define component types and folder structure, to create a new component, run:
+
+`npx hygen component new`
