@@ -15,6 +15,9 @@ Build system boilerplate for React projects:
 * [TypeScript](https://www.typescriptlang.org/)
 * [Image optimization](https://github.com/Klathmon/imagemin-webpack-plugin)
 
+### __Start:__
+
+Run `yarn start` for development and `yarn build` for production build.
 
 ### __Generator:__
 
