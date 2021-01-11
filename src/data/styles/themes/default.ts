@@ -1,11 +1,15 @@
 import { TypeHeadingSizes } from '../../../components/common/typography/TypeHeading';
 import { TypeParagraphSizes } from '../../../components/common/typography/TypeParagraph';
 import { Breakpoint } from '../Breakpoint';
+import mixins from '../mixins';
 
 export default {
   font: {
     heading: 'SignifyRaisonne',
     body: 'SignifyRelative',
+  },
+  mixins: {
+    ...mixins,
   },
   color: {
     // Core colors
