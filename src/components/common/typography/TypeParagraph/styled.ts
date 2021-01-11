@@ -10,16 +10,6 @@ export enum TypeParagraphSizes {
   XL,
 }
 
-const textSizes = {
-  [Breakpoint.XS]: {
-    [TypeParagraphSizes.XS]: 150,
-    [TypeParagraphSizes.S]: 150,
-    [TypeParagraphSizes.M]: 150,
-    [TypeParagraphSizes.L]: 150,
-    [TypeParagraphSizes.XL]: 150,
-  },
-};
-
-export const TypeParagraph = styled(Type).attrs<TypeProps>(() => ({
-  sizes: textSizes,
+export const TypeParagraph = styled(Type).attrs<TypeProps>((props: any) => ({
+  sizes: props.theme.paragraphs,
 }))<TypeProps>``;

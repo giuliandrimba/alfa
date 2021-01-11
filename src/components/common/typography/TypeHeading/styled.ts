@@ -11,17 +11,6 @@ export enum TypeHeadingSizes {
   H6,
 }
 
-const textSizes = {
-  [Breakpoint.XS]: {
-    [TypeHeadingSizes.H1]: 150,
-    [TypeHeadingSizes.H2]: 150,
-    [TypeHeadingSizes.H3]: 150,
-    [TypeHeadingSizes.H4]: 150,
-    [TypeHeadingSizes.H5]: 150,
-    [TypeHeadingSizes.H6]: 150,
-  },
-};
-
-export const TypeHeading = styled(Type).attrs<TypeProps>(() => ({
-  sizes: textSizes,
+export const TypeHeading = styled(Type).attrs<TypeProps>((props: any) => ({
+  sizes: props.theme.headings,
 }))<TypeProps>``;
