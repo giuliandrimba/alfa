@@ -1,6 +1,7 @@
 import React from 'react';
 import Logo from 'Assets/image/alfa.jpg'
 import { GlobalStyle } from './styled';
+import { TypeHeading, TypeHeadingSizes } from '../common/typography/TypeHeading';
 
 export type AppContextType = {};
 
@@ -11,7 +12,10 @@ export default () => {
   return (
     <AppContext.Provider value={context}>
       <GlobalStyle />
-      <h1>Alfa APP</h1>
+      <TypeHeading
+        as='h1'
+        size={TypeHeadingSizes.H1}
+      >Alfa APP</TypeHeading>
       <img src={Logo} />
     </AppContext.Provider>
   )
